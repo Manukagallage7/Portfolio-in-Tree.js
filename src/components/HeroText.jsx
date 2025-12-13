@@ -1,5 +1,5 @@
 import { FlipWords } from "./FlipWords";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 const HeroText = () => {
 
