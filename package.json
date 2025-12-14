@@ -14,6 +14,8 @@
     "@react-three/fiber": "^9.4.2",
     "@tailwindcss/vite": "^4.1.17",
     "clsx": "^2.1.1",
+    "cobe": "^0.6.5",
+    "globe": "^0.2.0",
     "motion": "^12.23.26",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
