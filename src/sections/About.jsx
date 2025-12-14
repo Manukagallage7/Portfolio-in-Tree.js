@@ -3,6 +3,7 @@ import {useRef} from 'react'
 import Card from '../components/Card'
 import { Globe } from '../components/globe'
 import CopyEmailButton from '../components/copyEmailButton'
+import { Frameworks } from '../components/Frameworks'
 
 
 const About = () => {
@@ -98,7 +99,20 @@ const About = () => {
                     </div>
                 </div>
                 {/* Grid 5 */}
-                <div className='grid-default-color grid-5'></div>
+                <div className='grid-default-color grid-5'>
+                    <div className='z-10 w-[50%]'>
+                        <p className='headtext'>
+                            Tech Stack
+                        </p>
+                        <p className='subtext'>
+                            Here are a few technologies I’ve been working with recently, focusing on building scalable applications,
+                            improving performance, learning modern frameworks, and strengthening backend and frontend development skills.
+                        </p>
+                    </div>
+                    <div className='absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125'>
+                        <Frameworks />
+                    </div>
+                </div>
             </div>
         </section>
     )
