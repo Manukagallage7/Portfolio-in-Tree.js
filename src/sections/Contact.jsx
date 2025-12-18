@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
 import Alert from '../components/Alert'
+import { Particles } from '../components/Particles'
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -11,6 +12,9 @@ const Contact = () => {
     })
 
     const [isLoading, setIsLoading] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertType, setAlertType] = useState('success');
+    const [alertMessage, setAlertMessage] = useState('');
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -18,6 +22,15 @@ const Contact = () => {
             [name]: value,
         }));
     }
+    const showAlertMessage = (type, message) => {
+        setAlertType(type);
+        setAlertMessage(message);
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 5000);
+    }
+
     const handleSubmit = async(e)=> {
         e.preventDefault();
         setIsLoading(true);
@@ -37,16 +50,25 @@ const Contact = () => {
                 email: '',
                 message: ''
             });
+            showAlertMessage('success', 'Your message has been sent successfully!');
         } catch (error) {
             setIsLoading(false);
             console.error('Unexpected error:', error);
-            alert('Ahh, something went wrong. Please try again.');
+            showAlertMessage('danger', 'Something went wrong. Please try again.');
+            setShowAlert(true);
         }
     }
         
     return (
         <section className='relative flex items-center c-space section-spacing'>
-            <Alert />
+            <Particles
+            className='absolute inset-0 z-0'
+            quantity={100}
+            ease={80}
+            color='#ffffff'
+            refresh
+            />
+            {showAlert && <Alert type={alertType} text={alertMessage} />}
             <div className='flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white'>
                 <div className='flex flex-col items-start w-full gap-5 mb-10'>
                     <h2 className='text-heading'>Let's Talk</h2>
